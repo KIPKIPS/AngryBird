@@ -51,6 +51,7 @@ public class Bird : MonoBehaviour {
         isClick = false;
         //不接受物理影响
         r2d.isKinematic = false;
+        //延迟调用,等待物理计算完成之后再将springJoint失效
         Invoke("Fly",0.1f);
     }
 
