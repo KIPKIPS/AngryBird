@@ -59,4 +59,5 @@ public class Bird : MonoBehaviour {
         //springJoint失效
         sj2d.enabled = false;
     }
+    //RigidBody的Angular Drag值代表旋转衰减,阻力(空气阻力)
 }
