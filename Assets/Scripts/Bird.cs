@@ -6,6 +6,14 @@ public class Bird : MonoBehaviour {
     private bool isClick;
     public Vector3 launchPos;
     public float maxDis;
+
+    public SpringJoint2D sj2d;
+    public Rigidbody2D r2d;
+
+    void Awake() {
+        sj2d = GetComponent<SpringJoint2D>();
+        r2d = GetComponent<Rigidbody2D>();
+    }
     // Start is called before the first frame update
     void Start() {
         isClick = false;
@@ -35,9 +43,19 @@ public class Bird : MonoBehaviour {
     //鼠标按下
     void OnMouseDown() {
         isClick = true;
+        //接受物理影响
+        r2d.isKinematic = true;
     }
     //鼠标抬起
     void OnMouseUp() {
         isClick = false;
+        //不接受物理影响
+        r2d.isKinematic = false;
+        Invoke("Fly",0.1f);
+    }
+
+    void Fly() {
+        //springJoint失效
+        sj2d.enabled = false;
     }
 }
