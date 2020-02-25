@@ -62,6 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PocketRPG Trails\Scripts\Effects\WeaponTrail.cs" />
+    <Compile Include="Assets\PocketRPG Trails\Scripts\Entities\BladeMaster.cs" />
+    <Compile Include="Assets\PocketRPG Trails\Scripts\Utility\AnimationController.cs" />
     <Compile Include="Assets\Scripts\Bird.cs" />
     <Compile Include="Assets\Scripts\Boom.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
