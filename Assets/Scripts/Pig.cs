@@ -13,6 +13,8 @@ public class Pig : MonoBehaviour {
     public bool isHurt;
     public GameObject boom;
     public GameObject pigScore;
+
+    public bool isPig=false;
     // Start is called before the first frame update
     void Start() {
         sr = GetComponent<SpriteRenderer>();
@@ -39,9 +41,12 @@ public class Pig : MonoBehaviour {
     }
     //绿皮猪死亡之后的操作
     void PigDead() {
+        if (isPig) {
+            GameManager.instance.pigs.Remove(this);
+        }
         Destroy(this.gameObject);
         Instantiate(boom,transform.position,Quaternion.identity);
-        GameObject score=Instantiate(pigScore, transform.position+new Vector3(0,0.6f,0), Quaternion.identity);
+        GameObject score=Instantiate(pigScore, transform.position+new Vector3(0,0.8f,0), Quaternion.identity);
         Destroy(score,1f);
     }
 }

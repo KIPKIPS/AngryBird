@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,12 +15,15 @@ public class Bird : MonoBehaviour {
     public LineRenderer lrLeft;
     public Transform rightPos;
     public Transform leftPos;
+    public GameObject boom;
+    public bool isFly;
     void Awake() {
         sj2d = GetComponent<SpringJoint2D>();
         r2d = GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
     void Start() {
+        isFly = false;
         isClick = false;
         launchPos = GameObject.Find("LaunchPos").transform.position;
     }
@@ -62,11 +66,15 @@ public class Bird : MonoBehaviour {
     }
 
     void Fly() {
+        isFly = true;
         //springJoint失效
         sj2d.enabled = false;
+        Invoke("DestroyMyself", 5);
     }
     //RigidBody的Angular Drag值代表旋转衰减,阻力(空气阻力)
-
+    void next() {
+        GameManager.instance.NextBird();
+    }
     //绘制橡皮筋
     void DrawLine() {
         //lrRight.SetPosition(0,rightPos.position);
@@ -76,5 +84,14 @@ public class Bird : MonoBehaviour {
 
         lrRight.SetPositions(new[] { rightPos.position, transform.position });
         lrLeft.SetPositions(new[] { leftPos.position, transform.position });
+    }
+
+    //销毁自身
+    void DestroyMyself() {
+        GameManager.instance.birds.Remove(this);
+        Instantiate(boom, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+        //下一只鸟上架
+        GameManager.instance.NextBird();
     }
 }
