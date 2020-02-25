@@ -17,7 +17,10 @@ public class Bird : MonoBehaviour {
     public Transform leftPos;
     public GameObject boom;
     public bool isFly;
+
+    public WeaponTrail trail;
     void Awake() {
+        trail = GetComponent<Trails>().trail;
         sj2d = GetComponent<SpringJoint2D>();
         r2d = GetComponent<Rigidbody2D>();
     }
@@ -26,6 +29,8 @@ public class Bird : MonoBehaviour {
         isFly = false;
         isClick = false;
         launchPos = GameObject.Find("LaunchPos").transform.position;
+        //默认没有拖尾
+        trail.SetTime(0.0f, 0.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -69,6 +74,12 @@ public class Bird : MonoBehaviour {
     }
 
     void Fly() {
+
+        //设置拖尾时长
+        trail.SetTime(0.2f, 0.0f, 1.0f);
+        //开始进行拖尾
+        trail.StartTrail(0.5f, 0.4f);
+
         isFly = true;
         //springJoint失效
         sj2d.enabled = false;
@@ -98,5 +109,9 @@ public class Bird : MonoBehaviour {
         Destroy(this.gameObject);
         //下一只鸟上架
         GameManager.instance.NextBird();
+    }
+    //小鸟碰到物体就取消拖尾
+    void OnCollisionEnter2D(Collision2D collision) {
+        trail.ClearTrail();
     }
 }

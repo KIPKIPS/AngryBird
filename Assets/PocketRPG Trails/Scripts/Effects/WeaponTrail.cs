@@ -38,12 +38,12 @@ public class WeaponTrail : MonoBehaviour {
      5. Call it's UpdateTrail method once a frame to rebuild the mesh
     */
     #region Public
-    public float height = 2.0f;
-    public float time = 2.0f;
+    public float height;
+    public float time;
     public bool alwaysUp = false;
     public float minDistance = 0.1f;  
 	public float timeTransitionSpeed = 1f;
-    public float desiredTime = 2.0f;
+    public float desiredTime;
     public Color startColor = Color.white;
     public Color endColor = new Color(1, 1, 1, 0);
     #endregion
