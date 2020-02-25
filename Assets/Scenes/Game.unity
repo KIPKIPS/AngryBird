@@ -1303,6 +1303,9 @@ MonoBehaviour:
   pigHurtSprite: {fileID: -8281071825006879847, guid: abd1d39e8b7f48248a7dfbc6fd6577a3,
     type: 3}
   isHurt: 0
+  boom: {fileID: 5963500951284852954, guid: b8993567c7666654aa759b2456ae7daf, type: 3}
+  pigScore: {fileID: 5598692518916835780, guid: c95116a0772711f4c97a203c876c0624,
+    type: 3}
 --- !u!1 &1117152793
 GameObject:
   m_ObjectHideFlags: 0

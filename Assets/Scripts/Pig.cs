@@ -11,6 +11,8 @@ public class Pig : MonoBehaviour {
     public Sprite pigHurtSprite;
 
     public bool isHurt;
+    public GameObject boom;
+    public GameObject pigScore;
     // Start is called before the first frame update
     void Start() {
         sr = GetComponent<SpriteRenderer>();
@@ -26,7 +28,7 @@ public class Pig : MonoBehaviour {
         //collision.relativeVelocity表示相对速度(向量),magnitude表示该向量的模长
         //死亡
         if (collision.relativeVelocity.magnitude > maxSpeed) {
-            Destroy(this.gameObject);
+            PigDead();
         }
         //受伤
         else if (collision.relativeVelocity.magnitude > minSpeed && collision.relativeVelocity.magnitude < maxSpeed) {
@@ -34,5 +36,12 @@ public class Pig : MonoBehaviour {
             isHurt = true;
         }
 
+    }
+    //绿皮猪死亡之后的操作
+    void PigDead() {
+        Destroy(this.gameObject);
+        Instantiate(boom,transform.position,Quaternion.identity);
+        GameObject score=Instantiate(pigScore, transform.position+new Vector3(0,0.6f,0), Quaternion.identity);
+        Destroy(score,1f);
     }
 }
