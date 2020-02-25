@@ -10,6 +10,10 @@ public class Bird : MonoBehaviour {
     public SpringJoint2D sj2d;
     public Rigidbody2D r2d;
 
+    public LineRenderer lrRight;
+    public LineRenderer lrLeft;
+    public Transform rightPos;
+    public Transform leftPos;
     void Awake() {
         sj2d = GetComponent<SpringJoint2D>();
         r2d = GetComponent<Rigidbody2D>();
@@ -38,6 +42,8 @@ public class Bird : MonoBehaviour {
                 dir *= maxDis;//方向乘距离得到长度向量
                 transform.position = dir + launchPos;//发射位置+长度向量得到对象被限定的位置坐标
             }
+            //绘制皮筋
+            DrawLine();
         }
     }
     //鼠标按下
@@ -60,4 +66,12 @@ public class Bird : MonoBehaviour {
         sj2d.enabled = false;
     }
     //RigidBody的Angular Drag值代表旋转衰减,阻力(空气阻力)
+
+    //绘制橡皮筋
+    void DrawLine() {
+        lrRight.SetPosition(0,rightPos.position);
+        lrRight.SetPosition(1,transform.position);
+        lrLeft.SetPosition(0,leftPos.position);
+        lrLeft.SetPosition(1,transform.position);
+    }
 }
