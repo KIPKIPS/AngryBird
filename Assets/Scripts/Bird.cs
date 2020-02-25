@@ -62,7 +62,10 @@ public class Bird : MonoBehaviour {
         r2d.isKinematic = false;
         //延迟调用,等待物理计算完成之后再将springJoint失效
         Invoke("Fly", 0.1f);
-        
+
+        //禁用绘制橡皮筋
+        lrRight.enabled = false;
+        lrLeft.enabled = false;
     }
 
     void Fly() {
@@ -72,18 +75,20 @@ public class Bird : MonoBehaviour {
         Invoke("DestroyMyself", 5);
     }
     //RigidBody的Angular Drag值代表旋转衰减,阻力(空气阻力)
-    void next() {
-        GameManager.instance.NextBird();
-    }
+
     //绘制橡皮筋
     void DrawLine() {
+        
+        //激活绘制橡皮筋
+        lrRight.enabled = true;
+        lrLeft.enabled = true;
+        //绘制
+        lrRight.SetPositions(new[] { rightPos.position, transform.position });
+        lrLeft.SetPositions(new[] { leftPos.position, transform.position });
         //lrRight.SetPosition(0,rightPos.position);
         //lrRight.SetPosition(1,transform.position);
         //lrLeft.SetPosition(0,leftPos.position);
         //lrLeft.SetPosition(1,transform.position);
-
-        lrRight.SetPositions(new[] { rightPos.position, transform.position });
-        lrLeft.SetPositions(new[] { leftPos.position, transform.position });
     }
 
     //销毁自身
