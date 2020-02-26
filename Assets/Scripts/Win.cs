@@ -16,7 +16,7 @@ public class Win : MonoBehaviour
         
     }
 
-    public void OnWinDisplayStars() {
+    public void OnWinDisplayStars() { 
         GameManager.instance.DisplayStars();
     }
 }

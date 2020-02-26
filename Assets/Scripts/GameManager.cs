@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
     private Vector3 originPos;//初始位置
     public GameObject winPanel;
     public GameObject losePanel;
+
+    public GameObject[] stars;
     void Initialized() {
         for (int i = 0; i < birds.Count; i++) {
             //第一只鸟的Bird脚本激活,SpringJoint2D组件激活
@@ -61,6 +63,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void DisplayStars() {
-
+        for (int i = 0; i < birds.Count+1; i++) {
+            stars[i].SetActive(true);
+        }
     }
 }
