@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Pig.cs" />
     <Compile Include="Assets\Scripts\Trails.cs" />
+    <Compile Include="Assets\Scripts\Win.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Unity_WorkStation/Angry_Bird/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
