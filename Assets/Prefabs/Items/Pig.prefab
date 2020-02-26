@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8967053080027723784}
   - component: {fileID: 8967053080027723788}
   m_Layer: 0
-  m_Name: Pig_0
+  m_Name: Pig
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75558db2158884428e29f7448f17185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 10
-  minSpeed: 5
+  maxSpeed: 8
+  minSpeed: 4
   sr: {fileID: 0}
   hurtSprite: {fileID: 0}
   isHurt: 0
