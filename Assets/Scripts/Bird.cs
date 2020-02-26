@@ -83,7 +83,7 @@ public class Bird : MonoBehaviour {
         isFly = true;
         //springJoint失效
         sj2d.enabled = false;
-        Invoke("DestroyMyself", 5);
+        
     }
     //RigidBody的Angular Drag值代表旋转衰减,阻力(空气阻力)
 
@@ -113,5 +113,8 @@ public class Bird : MonoBehaviour {
     //小鸟碰到物体就取消拖尾
     void OnCollisionEnter2D(Collision2D collision) {
         trail.ClearTrail();
+        if (collision.transform.tag=="Enemy"|| collision.transform.tag == "Ground" && isFly) {
+            Invoke("DestroyMyself", 3);
+        }
     }
 }
