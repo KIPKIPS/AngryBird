@@ -8,11 +8,11 @@ public class Pig : MonoBehaviour {
     public float minSpeed = 5;
 
     public SpriteRenderer sr;
-    public Sprite pigHurtSprite;
+    public Sprite hurtSprite;
 
     public bool isHurt;
     public GameObject boom;
-    public GameObject pigScore;
+    public GameObject score;
 
     public bool isPig=false;
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class Pig : MonoBehaviour {
         }
         //受伤
         else if (collision.relativeVelocity.magnitude > minSpeed && collision.relativeVelocity.magnitude < maxSpeed) {
-            sr.sprite = pigHurtSprite;
+            sr.sprite = hurtSprite;
             isHurt = true;
         }
 
@@ -46,7 +46,7 @@ public class Pig : MonoBehaviour {
         }
         Destroy(this.gameObject);
         Instantiate(boom,transform.position,Quaternion.identity);
-        GameObject score=Instantiate(pigScore, transform.position+new Vector3(0,0.8f,0), Quaternion.identity);
-        Destroy(score,1f);
+        GameObject s=Instantiate(score, transform.position+new Vector3(0,0.8f,0), Quaternion.identity);
+        Destroy(s,1f);
     }
 }
