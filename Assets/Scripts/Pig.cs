@@ -44,9 +44,9 @@ public class Pig : MonoBehaviour {
         if (isPig) {
             GameManager.instance.pigs.Remove(this);
         }
-        Destroy(this.gameObject);
         Instantiate(boom,transform.position,Quaternion.identity);
         GameObject s=Instantiate(score, transform.position+new Vector3(0,0.8f,0), Quaternion.identity);
         Destroy(s,1f);
+        Destroy(this.gameObject);
     }
 }
