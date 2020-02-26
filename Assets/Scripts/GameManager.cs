@@ -63,7 +63,12 @@ public class GameManager : MonoBehaviour {
     }
 
     public void DisplayStars() {
-        for (int i = 0; i < birds.Count+1; i++) {
+        StartCoroutine("Stars");
+    }
+
+    public IEnumerator Stars() {
+        for (int i = 0; i < birds.Count + 1; i++) {
+            yield return new WaitForSeconds(0.5f);
             stars[i].SetActive(true);
         }
     }
