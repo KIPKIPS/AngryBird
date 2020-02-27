@@ -77,7 +77,6 @@ public class GameManager : MonoBehaviour {
 
     public void Pause() {
         pausePanel.GetComponent<Animator>().SetBool("isPause",true);
-        Debug.Log("set");
     }
 
     public void Retry() {

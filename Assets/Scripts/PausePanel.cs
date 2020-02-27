@@ -5,30 +5,41 @@ using UnityEngine.SceneManagement;
 
 public class PausePanel : MonoBehaviour {
     public Animator anim;
-
+    public GameObject pauseButton;
     void Awake() {
         anim = GetComponent<Animator>();
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
     public void Pause() {
-        anim.SetBool("isPause",true);
+        anim.SetBool("isPause", true);
     }
 
-    public void Continue() {
+    public void Resume() {
+        Time.timeScale = 1;
         anim.SetBool("isPause", false);
     }
 
     public void Retry() {
         SceneManager.LoadScene(0);
+    }
+
+    //动画完成事件
+    public void PauseAnimStart() {
+        pauseButton.SetActive(false);
+    }
+    public void PauseAnimEnd() {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeAnimEnd() {
+        pauseButton.SetActive(true);
     }
 }

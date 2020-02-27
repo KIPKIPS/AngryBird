@@ -293,6 +293,7 @@
 Assets\Scripts\Bird.cs
 Assets\Scripts\Boom.cs
 Assets\Scripts\GameManager.cs
+Assets\Scripts\PausePanel.cs
 Assets\Scripts\Pig.cs
 Assets\Scripts\Trails.cs
 Assets\Scripts\Win.cs
