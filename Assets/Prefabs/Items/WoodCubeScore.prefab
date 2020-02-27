@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7458719211581734302}
   - component: {fileID: 2192170120911877888}
   m_Layer: 0
-  m_Name: WoodScore
+  m_Name: WoodCubeScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,9 +66,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 2145494755
+  m_SortingLayer: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 8427507492161664069, guid: f19d7b4e148ebb44c8e4c3fdfc10bd72,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

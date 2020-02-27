@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public List<Bird> birds;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public GameObject winPanel;
     public GameObject losePanel;
     public GameObject pausePanel;
+
     public GameObject[] stars;
     void Initialized() {
         for (int i = 0; i < birds.Count; i++) {
@@ -74,16 +76,15 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Pause() {
-        pausePanel.SetActive(true);
-        pausePanel.GetComponent<Animator>().SetBool("resume", false);
+        pausePanel.GetComponent<Animator>().SetBool("isPause",true);
+        Debug.Log("set");
     }
 
-    public void Continue() {
-        pausePanel.GetComponent<Animator>().SetBool("resume",true);
-        Invoke("set",1f);
+    public void Retry() {
+        SceneManager.LoadScene(0);
     }
 
-    void set() {
-        pausePanel.SetActive(false);
+    public void Home() {
+        SceneManager.LoadScene(1);
     }
 }

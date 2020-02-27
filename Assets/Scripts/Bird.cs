@@ -20,8 +20,6 @@ public class Bird : MonoBehaviour {
     public bool canMove = true;
 
     public WeaponTrail trail;
-
-    private float currTime=0;
     void Awake() {
         trail = GetComponent<Trails>().trail;
         sj2d = GetComponent<SpringJoint2D>();
@@ -60,14 +58,6 @@ public class Bird : MonoBehaviour {
             }
             //绘制皮筋
             DrawLine();
-        }
-
-        if (isFly) {
-            currTime += Time.deltaTime;
-            //Debug.Log(currTime);
-            if (currTime > 4f) {
-                DestroyMyself();
-            }
         }
     }
     //鼠标按下
