@@ -17,6 +17,7 @@ public class Bird : MonoBehaviour {
     public Transform leftPos;
     public GameObject boom;
     public bool isFly;
+    public bool canMove = true;
 
     public WeaponTrail trail;
     void Awake() {
@@ -56,21 +57,27 @@ public class Bird : MonoBehaviour {
     }
     //鼠标按下
     void OnMouseDown() {
-        isClick = true;
-        //接受物理影响
-        r2d.isKinematic = true;
+        if (canMove) {
+            isClick = true;
+            //接受物理影响
+            r2d.isKinematic = true;
+        }
+        
     }
     //鼠标抬起
     void OnMouseUp() {
-        isClick = false;
-        //不接受物理影响
-        r2d.isKinematic = false;
-        //延迟调用,等待物理计算完成之后再将springJoint失效
-        Invoke("Fly", 0.1f);
+        if (canMove) {
+            isClick = false;
+            //不接受物理影响
+            r2d.isKinematic = false;
+            //延迟调用,等待物理计算完成之后再将springJoint失效
+            Invoke("Fly", 0.1f);
 
-        //禁用绘制橡皮筋
-        lrRight.enabled = false;
-        lrLeft.enabled = false;
+            //禁用绘制橡皮筋
+            lrRight.enabled = false;
+            lrLeft.enabled = false;
+            canMove = false;
+        }
     }
 
     void Fly() {
