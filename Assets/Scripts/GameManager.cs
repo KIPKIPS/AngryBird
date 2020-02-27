@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     private Vector3 originPos;//初始位置
     public GameObject winPanel;
     public GameObject losePanel;
-
+    public GameObject pausePanel;
     public GameObject[] stars;
     void Initialized() {
         for (int i = 0; i < birds.Count; i++) {
@@ -71,5 +71,19 @@ public class GameManager : MonoBehaviour {
             yield return new WaitForSeconds(0.5f);
             stars[i].SetActive(true);
         }
+    }
+
+    public void Pause() {
+        pausePanel.SetActive(true);
+        pausePanel.GetComponent<Animator>().SetBool("resume", false);
+    }
+
+    public void Continue() {
+        pausePanel.GetComponent<Animator>().SetBool("resume",true);
+        Invoke("set",1f);
+    }
+
+    void set() {
+        pausePanel.SetActive(false);
     }
 }
