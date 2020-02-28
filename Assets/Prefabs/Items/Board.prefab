@@ -105,6 +105,9 @@ MonoBehaviour:
   boom: {fileID: 5963500951284852954, guid: b8993567c7666654aa759b2456ae7daf, type: 3}
   score: {fileID: 2115520751870646204, guid: 6a3312f7b14ac5044af7a6ed5cb07db1, type: 3}
   isPig: 0
+  dead: {fileID: 8300000, guid: f7872a240c3a867458646a6a01dde6a2, type: 3}
+  hurt: {fileID: 8300000, guid: 53dea70923c95cb45864ff65eeb38785, type: 3}
+  birdCollision: {fileID: 8300000, guid: 32b5cb2ec3029484eb0a71e43bd697e0, type: 3}
 --- !u!50 &5489724976320580489
 Rigidbody2D:
   serializedVersion: 4
