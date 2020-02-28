@@ -7,7 +7,7 @@ public class Bird : MonoBehaviour {
     private bool isClick;
     public Vector3 launchPos;
     public float maxDis;
-
+    public SpriteRenderer sr;
     public SpringJoint2D sj2d;
     public Rigidbody2D r2d;
 
@@ -24,7 +24,14 @@ public class Bird : MonoBehaviour {
 
     public AudioClip select;
     public AudioClip fly;
+    public Sprite yellowSpeedUp;
+    public enum BirdType {
+        Red,Yellow,Black,Green
+    }
+
+    public BirdType bt;
     void Awake() {
+        sr = GetComponent<SpriteRenderer>();
         trail = GetComponent<Trails>().trail;
         sj2d = GetComponent<SpringJoint2D>();
         r2d = GetComponent<Rigidbody2D>();
@@ -33,7 +40,6 @@ public class Bird : MonoBehaviour {
         lrLeft = GameObject.Find("Left").GetComponent<LineRenderer>();
         rightPos = GameObject.Find("RightPos").transform;
         leftPos = GameObject.Find("LeftPos").transform;
-
 
     }
     // Start is called before the first frame update
@@ -72,6 +78,18 @@ public class Bird : MonoBehaviour {
         //平滑位置
         Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, tarPos, Time.deltaTime*smooth);
         
+        //黄色小鸟技能
+        if (isFly&&bt==BirdType.Yellow&&Input.GetMouseButtonDown(0)) {
+            DirectionalSpeedUpSkill();
+        }
+    }
+    //黄色小鸟的定向加速技能
+    public void DirectionalSpeedUpSkill() {
+        isFly = false;
+        GameObject bo=Instantiate(boom, transform.position, Quaternion.identity);
+        bo.transform.localScale=new Vector3(0.7f,0.7f,0.7f);
+        sr.sprite = yellowSpeedUp;
+        r2d.velocity *= 2.2f;
     }
     //鼠标按下
     void OnMouseDown() {
@@ -84,8 +102,6 @@ public class Bird : MonoBehaviour {
                 r2d.isKinematic = true;
             }
         }
-        
-        
     }
     //鼠标抬起
     void OnMouseUp() {
@@ -150,6 +166,7 @@ public class Bird : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision) {
         trail.ClearTrail();
         if (collision.transform.tag=="Enemy"|| collision.transform.tag == "Ground" && isFly) {
+            isFly = false;
             Invoke("DestroyMyself", 3);
         }
     }
