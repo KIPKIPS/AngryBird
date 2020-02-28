@@ -273,6 +273,13 @@ MonoBehaviour:
   fly: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
   yellowSpeedUp: {fileID: -1423119516681469403, guid: abd1d39e8b7f48248a7dfbc6fd6577a3,
     type: 3}
+  redHurt: {fileID: 6460371693601888453, guid: abd1d39e8b7f48248a7dfbc6fd6577a3, type: 3}
+  yellowHurt: {fileID: -8330303365068641620, guid: abd1d39e8b7f48248a7dfbc6fd6577a3,
+    type: 3}
+  greenHurt: {fileID: -5601588441658611051, guid: abd1d39e8b7f48248a7dfbc6fd6577a3,
+    type: 3}
+  blackHurt: {fileID: -5431343357865720789, guid: abd1d39e8b7f48248a7dfbc6fd6577a3,
+    type: 3}
   bt: 1
 --- !u!114 &915132223708902330
 MonoBehaviour:

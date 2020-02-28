@@ -29,6 +29,7 @@ public class PausePanel : MonoBehaviour {
 
     public void Retry() {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     //动画完成事件

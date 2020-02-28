@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
             if (i == 0) {
                 //将第一个小鸟的位置置为初始位置 
                 birds[i].gameObject.transform.position = originPos;
-
+                birds[i].onGround = false;
                 birds[i].enabled = true;
                 birds[i].sj2d.enabled = true;
             }
@@ -81,9 +81,11 @@ public class GameManager : MonoBehaviour {
 
     public void Retry() {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void Home() {
         SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
 }

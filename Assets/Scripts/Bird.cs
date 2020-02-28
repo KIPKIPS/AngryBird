@@ -25,12 +25,20 @@ public class Bird : MonoBehaviour {
     public AudioClip select;
     public AudioClip fly;
     public Sprite yellowSpeedUp;
+    private bool launch = false;
+
+    public Sprite redHurt;
+    public Sprite yellowHurt;
+    public Sprite greenHurt;
+    public Sprite blackHurt;
+    public bool onGround = true;
     public enum BirdType {
-        Red,Yellow,Black,Green
+        Red, Yellow, Black, Green
     }
 
     public BirdType bt;
     void Awake() {
+        onGround = true;
         sr = GetComponent<SpriteRenderer>();
         trail = GetComponent<Trails>().trail;
         sj2d = GetComponent<SpringJoint2D>();
@@ -74,26 +82,46 @@ public class Bird : MonoBehaviour {
         //相机跟随
         float posX = transform.position.x;//小鸟位置
         //目标位置,x范围限定在0-15之间
-        Vector3 tarPos=new Vector3(Mathf.Clamp(posX,0,15),Camera.main.transform.position.y, Camera.main.transform.position.z);
+        Vector3 tarPos = new Vector3(Mathf.Clamp(posX, 0, 15), Camera.main.transform.position.y, Camera.main.transform.position.z);
         //平滑位置
-        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, tarPos, Time.deltaTime*smooth);
-        
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, tarPos, Time.deltaTime * smooth);
+
         //黄色小鸟技能
-        if (isFly&&bt==BirdType.Yellow&&Input.GetMouseButtonDown(0)) {
-            DirectionalSpeedUpSkill();
+        if (isFly && Input.GetMouseButtonDown(0)) {
+            if (bt == BirdType.Yellow) {
+                DirectionalSpeedUpSkill();
+            }
+            if (bt == BirdType.Green) {
+                BoomerangSkill();
+            }
+            if (bt == BirdType.Black) {
+                BoomSkill();
+            }
         }
     }
+    //黑色小鸟的爆炸技能
+    public void BoomSkill() {
+
+    }
+    //绿色小鸟的回旋技能
+    public void BoomerangSkill() {
+        isFly = false;
+        GameObject bo = Instantiate(boom, transform.position, Quaternion.identity);
+        bo.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+        r2d.velocity = new Vector2(-r2d.velocity.x * 1.5f, r2d.velocity.y * 0.5f);
+    }
+
     //黄色小鸟的定向加速技能
     public void DirectionalSpeedUpSkill() {
         isFly = false;
-        GameObject bo=Instantiate(boom, transform.position, Quaternion.identity);
-        bo.transform.localScale=new Vector3(0.7f,0.7f,0.7f);
+        GameObject bo = Instantiate(boom, transform.position, Quaternion.identity);
+        bo.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
         sr.sprite = yellowSpeedUp;
         r2d.velocity *= 2.2f;
     }
     //鼠标按下
     void OnMouseDown() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0)&&onGround==false) {
             AudioPlay(@select);
 
             if (canMove) {
@@ -105,7 +133,8 @@ public class Bird : MonoBehaviour {
     }
     //鼠标抬起
     void OnMouseUp() {
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetMouseButtonUp(0)&&onGround==false) {
+            launch = true;
             if (canMove) {
                 isClick = false;
                 //不接受物理影响
@@ -121,7 +150,7 @@ public class Bird : MonoBehaviour {
                 //Debug.Log(currTime);
             }
         }
-        
+
     }
 
     void Fly() {
@@ -135,13 +164,13 @@ public class Bird : MonoBehaviour {
 
         //springJoint失效
         sj2d.enabled = false;
-        
+
     }
     //RigidBody的Angular Drag值代表旋转衰减,阻力(空气阻力)
 
     //绘制橡皮筋
     void DrawLine() {
-        
+
         //激活绘制橡皮筋
         lrRight.enabled = true;
         lrLeft.enabled = true;
@@ -165,14 +194,20 @@ public class Bird : MonoBehaviour {
     //小鸟碰到物体就取消拖尾
     void OnCollisionEnter2D(Collision2D collision) {
         trail.ClearTrail();
-        if (collision.transform.tag=="Enemy"|| collision.transform.tag == "Ground" && isFly) {
+        if (collision.transform.tag == "Enemy" || collision.transform.tag == "Ground" && launch) {
             isFly = false;
+            switch (bt) {
+                case BirdType.Red: sr.sprite = redHurt; break;
+                case BirdType.Yellow: sr.sprite = yellowHurt; break;
+                case BirdType.Green: sr.sprite = greenHurt; break;
+                case BirdType.Black: sr.sprite = blackHurt; break;
+            }
             Invoke("DestroyMyself", 3);
         }
     }
 
     public void AudioPlay(AudioClip ac) {
-        AudioSource.PlayClipAtPoint(ac,transform.position);
+        AudioSource.PlayClipAtPoint(ac, transform.position);
     }
 
 }
