@@ -15,6 +15,10 @@ public class Pig : MonoBehaviour {
     public GameObject score;
 
     public bool isPig=false;
+
+    public AudioClip dead;
+    public AudioClip hurt;
+    public AudioClip birdCollision;
     // Start is called before the first frame update
     void Start() {
         sr = GetComponent<SpriteRenderer>();
@@ -36,6 +40,11 @@ public class Pig : MonoBehaviour {
         else if (collision.relativeVelocity.magnitude > minSpeed && collision.relativeVelocity.magnitude < maxSpeed) {
             sr.sprite = hurtSprite;
             isHurt = true;
+            AudioPlay(hurt);
+        }
+
+        if (collision.transform.tag=="Player") {
+            AudioPlay(birdCollision);
         }
 
     }
@@ -43,10 +52,14 @@ public class Pig : MonoBehaviour {
     void PigDead() {
         if (isPig) {
             GameManager.instance.pigs.Remove(this);
+            AudioPlay(dead);
         }
         Instantiate(boom,transform.position,Quaternion.identity);
         GameObject s=Instantiate(score, transform.position+new Vector3(0,0.8f,0), Quaternion.identity);
         Destroy(s,1f);
         Destroy(this.gameObject);
+    }
+    public void AudioPlay(AudioClip ac) {
+        AudioSource.PlayClipAtPoint(ac, transform.position);
     }
 }

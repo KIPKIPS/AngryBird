@@ -268,6 +268,8 @@ MonoBehaviour:
   canMove: 1
   trail: {fileID: 0}
   smooth: 3
+  select: {fileID: 8300000, guid: 3641c9435ad52ea429348437c2742cdb, type: 3}
+  fly: {fileID: 8300000, guid: 65774e057815a5e4fa70215e9acad616, type: 3}
 --- !u!114 &647839515901310113
 MonoBehaviour:
   m_ObjectHideFlags: 0

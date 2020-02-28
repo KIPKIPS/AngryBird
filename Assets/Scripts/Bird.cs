@@ -21,6 +21,9 @@ public class Bird : MonoBehaviour {
 
     public WeaponTrail trail;
     public float smooth = 3;
+
+    public AudioClip select;
+    public AudioClip fly;
     void Awake() {
         trail = GetComponent<Trails>().trail;
         sj2d = GetComponent<SpringJoint2D>();
@@ -30,6 +33,8 @@ public class Bird : MonoBehaviour {
         lrLeft = GameObject.Find("Left").GetComponent<LineRenderer>();
         rightPos = GameObject.Find("RightPos").transform;
         leftPos = GameObject.Find("LeftPos").transform;
+
+
     }
     // Start is called before the first frame update
     void Start() {
@@ -70,32 +75,42 @@ public class Bird : MonoBehaviour {
     }
     //鼠标按下
     void OnMouseDown() {
-        if (canMove) {
-            isClick = true;
-            //接受物理影响
-            r2d.isKinematic = true;
+        if (Input.GetMouseButtonDown(0)) {
+            AudioPlay(@select);
+
+            if (canMove) {
+                isClick = true;
+                //接受物理影响
+                r2d.isKinematic = true;
+            }
         }
+        
         
     }
     //鼠标抬起
     void OnMouseUp() {
-        if (canMove) {
-            isClick = false;
-            //不接受物理影响
-            r2d.isKinematic = false;
-            //延迟调用,等待物理计算完成之后再将springJoint失效
-            Invoke("Fly", 0.1f);
-            
-            //禁用绘制橡皮筋
-            lrRight.enabled = false;
-            lrLeft.enabled = false;
-            canMove = false;
+        if (Input.GetMouseButtonUp(0)) {
+            if (canMove) {
+                isClick = false;
+                //不接受物理影响
+                r2d.isKinematic = false;
+                //延迟调用,等待物理计算完成之后再将springJoint失效
+                Invoke("Fly", 0.1f);
 
-            //Debug.Log(currTime);
+                //禁用绘制橡皮筋
+                lrRight.enabled = false;
+                lrLeft.enabled = false;
+                canMove = false;
+
+                //Debug.Log(currTime);
+            }
         }
+        
     }
 
     void Fly() {
+        AudioPlay(fly);
+
         isFly = true;
         //设置拖尾时长
         trail.SetTime(0.2f, 0.0f, 1.0f);
@@ -138,4 +153,9 @@ public class Bird : MonoBehaviour {
             Invoke("DestroyMyself", 3);
         }
     }
+
+    public void AudioPlay(AudioClip ac) {
+        AudioSource.PlayClipAtPoint(ac,transform.position);
+    }
+
 }
