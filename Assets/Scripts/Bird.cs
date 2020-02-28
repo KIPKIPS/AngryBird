@@ -20,6 +20,7 @@ public class Bird : MonoBehaviour {
     public bool canMove = true;
 
     public WeaponTrail trail;
+    public float smooth = 3;
     void Awake() {
         trail = GetComponent<Trails>().trail;
         sj2d = GetComponent<SpringJoint2D>();
@@ -59,6 +60,13 @@ public class Bird : MonoBehaviour {
             //绘制皮筋
             DrawLine();
         }
+        //相机跟随
+        float posX = transform.position.x;//小鸟位置
+        //目标位置,x范围限定在0-15之间
+        Vector3 tarPos=new Vector3(Mathf.Clamp(posX,0,15),Camera.main.transform.position.y, Camera.main.transform.position.z);
+        //平滑位置
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, tarPos, Time.deltaTime*smooth);
+        
     }
     //鼠标按下
     void OnMouseDown() {

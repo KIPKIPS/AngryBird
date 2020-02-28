@@ -32,13 +32,14 @@ public class PausePanel : MonoBehaviour {
     }
 
     //动画完成事件
+    //pause动画事件
     public void PauseAnimStart() {
         pauseButton.SetActive(false);
     }
     public void PauseAnimEnd() {
         Time.timeScale = 0;
     }
-
+    //resume动画事件
     public void ResumeAnimEnd() {
         pauseButton.SetActive(true);
     }

@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchPos: {x: 0, y: 0, z: 0}
-  maxDis: 2
+  maxDis: 1.8
   sj2d: {fileID: 0}
   r2d: {fileID: 0}
   lrRight: {fileID: 0}
@@ -267,6 +267,7 @@ MonoBehaviour:
   isFly: 0
   canMove: 1
   trail: {fileID: 0}
+  smooth: 3
 --- !u!114 &647839515901310113
 MonoBehaviour:
   m_ObjectHideFlags: 0
