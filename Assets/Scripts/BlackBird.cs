@@ -26,12 +26,12 @@ public class BlackBird : Bird {
     }
 
     public override void BoomSkill() {
-        r2d.velocity = new Vector2(0,0);
+        r2d.velocity = new Vector2(0, 0);
         sr.sprite = null;
         Instantiate(boomBird, currPos, Quaternion.identity);
         isFly = false;
         AudioSource.PlayClipAtPoint(ac, transform.position);
-        if (blocks.Count!=0&&blocks!=null) {
+        if (blocks.Count != 0 && blocks != null) {
             for (int i = 0; i < blocks.Count; i++) {
                 blocks[i].Dead();
             }
@@ -42,16 +42,10 @@ public class BlackBird : Bird {
         trail.ClearTrail();
         if (collision.transform.tag == "Enemy" || collision.transform.tag == "Ground" && launch) {
             isFly = false;
-            switch (bt) {
-                case BirdType.Red: sr.sprite = redHurt; break;
-                case BirdType.Yellow: sr.sprite = yellowHurt; break;
-                case BirdType.Green: sr.sprite = greenHurt; break;
-                case BirdType.Black:
-                    ie = BoomBird();
-                    StartCoroutine(ie);
-                    Invoke("BoomSkill", 3f);
-                    break;
-            }
+            ie = BoomBird();
+            StartCoroutine(ie);
+            Invoke("BoomSkill", 3f);
+
         }
     }
 
