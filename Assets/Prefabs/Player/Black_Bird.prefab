@@ -288,7 +288,7 @@ MonoBehaviour:
   currPos: {x: 0, y: 0, z: 0}
   isClick: 0
   launchPos: {x: 0, y: 0, z: 0}
-  maxDis: 0
+  maxDis: 1.8
   sr: {fileID: 0}
   sj2d: {fileID: 0}
   r2d: {fileID: 0}
@@ -314,5 +314,9 @@ MonoBehaviour:
     type: 3}
   onGround: 1
   bt: 2
-  ac: {fileID: 0}
-  boomBird: {fileID: 0}
+  ac: {fileID: 8300000, guid: f7872a240c3a867458646a6a01dde6a2, type: 3}
+  boomBird: {fileID: 2074124450179199440, guid: d8a3507b4a03b594d916414f11a7c695,
+    type: 3}
+  exp1: {fileID: -7547652645556462291, guid: abd1d39e8b7f48248a7dfbc6fd6577a3, type: 3}
+  exp2: {fileID: -3086621616932859911, guid: abd1d39e8b7f48248a7dfbc6fd6577a3, type: 3}
+  exp3: {fileID: -7839080061601919527, guid: abd1d39e8b7f48248a7dfbc6fd6577a3, type: 3}

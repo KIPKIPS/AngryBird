@@ -7,6 +7,12 @@ public class BlackBird : Bird
     private List<Pig> blocks = new List<Pig>();
     public AudioClip ac;
     public GameObject boomBird;
+
+    public Sprite exp1;
+    public Sprite exp2;
+    public Sprite exp3;
+
+    private IEnumerator ie;
     // Start is called before the first frame update
     //触发爆炸范围圈,将游戏物体的Pig脚本添加到销毁列表
     void OnTriggerEnter2D(Collider2D collision) {
@@ -21,7 +27,6 @@ public class BlackBird : Bird
     }
 
     public override void BoomSkill() {
-        Debug.Log(currPos);
         Instantiate(boomBird, currPos, Quaternion.identity);
         isFly = false;
         AudioSource.PlayClipAtPoint(ac,transform.position);
@@ -38,13 +43,30 @@ public class BlackBird : Bird
                 case BirdType.Red: sr.sprite = redHurt; break;
                 case BirdType.Yellow: sr.sprite = yellowHurt; break;
                 case BirdType.Green: sr.sprite = greenHurt; break;
-                case BirdType.Black: BoomBird(); break;
+                case BirdType.Black:
+                    ie = BoomBird();
+                    StartCoroutine(ie);
+                    Invoke("BoomSkill", 2.5f);
+                    break;
             }
-            Invoke("DestroyMyself", 3);
         }
     }
 
-    void BoomBird() {
-        Debug.Log("boom");
+    IEnumerator BoomBird() {
+        yield return new WaitForSeconds(2.5f/3f);
+        sr.sprite = exp1;
+        yield return new WaitForSeconds(5f / 3f);
+        sr.sprite = exp2;
+        yield return new WaitForSeconds(7.5f / 3f);
+        sr.sprite = exp3;
+    }
+    public new void DestroyMyself() {
+        GameManager.instance.birds.Remove(this);
+        if (ie!=null) {
+            StopCoroutine(ie);
+        }
+        Destroy(this.gameObject);
+        //下一只鸟上架
+        GameManager.instance.NextBird();
     }
 }
