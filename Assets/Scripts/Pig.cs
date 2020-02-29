@@ -49,7 +49,7 @@ public class Pig : MonoBehaviour {
 
     }
     //绿皮猪死亡之后的操作
-    void PigDead() {
+    public void PigDead() {
         if (isPig) {
             GameManager.instance.pigs.Remove(this);
             AudioPlay(dead);

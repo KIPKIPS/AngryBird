@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bird : MonoBehaviour {
-    private bool isClick;
-    public Vector3 launchPos;
-    public float maxDis;
+    public Vector3 currPos;
+    public bool isClick;
+    public Vector3 launchPos;//弹弓发射位置
+    public float maxDis;//皮筋最大距离
     public SpriteRenderer sr;
     public SpringJoint2D sj2d;
     public Rigidbody2D r2d;
 
     public LineRenderer lrRight;
     public LineRenderer lrLeft;
-    public Transform rightPos;
-    public Transform leftPos;
-    public GameObject boom;
+    public Transform rightPos;//右支架
+    public Transform leftPos;//左支架
+    public GameObject boom;//爆炸特效
     public bool isFly;
     public bool canMove = true;
 
@@ -25,7 +26,7 @@ public class Bird : MonoBehaviour {
     public AudioClip select;
     public AudioClip fly;
     public Sprite yellowSpeedUp;
-    private bool launch = false;
+    public bool launch = false;
 
     public Sprite redHurt;
     public Sprite yellowHurt;
@@ -35,9 +36,8 @@ public class Bird : MonoBehaviour {
     public enum BirdType {
         Red, Yellow, Black, Green
     }
-
     public BirdType bt;
-    void Awake() {
+    public void Awake() {
         onGround = true;
         sr = GetComponent<SpriteRenderer>();
         trail = GetComponent<Trails>().trail;
@@ -51,7 +51,7 @@ public class Bird : MonoBehaviour {
 
     }
     // Start is called before the first frame update
-    void Start() {
+    public void Start() {
         isFly = false;
         isClick = false;
         launchPos = GameObject.Find("LaunchPos").transform.position;
@@ -60,7 +60,8 @@ public class Bird : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    public void Update() {
+        currPos = transform.position;
         if (isClick) {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);//将鼠标坐标转化到屏幕空间坐标系
             //1.将坐标的z轴限定为0
@@ -81,12 +82,13 @@ public class Bird : MonoBehaviour {
         }
         //相机跟随
         float posX = transform.position.x;//小鸟位置
+        //Debug.Log(transform.name+" "+posX);
         //目标位置,x范围限定在0-15之间
         Vector3 tarPos = new Vector3(Mathf.Clamp(posX, 0, 15), Camera.main.transform.position.y, Camera.main.transform.position.z);
         //平滑位置
         Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, tarPos, Time.deltaTime * smooth);
 
-        //黄色小鸟技能
+        //小鸟技能
         if (isFly && Input.GetMouseButtonDown(0)) {
             if (bt == BirdType.Yellow) {
                 DirectionalSpeedUpSkill();
@@ -100,7 +102,7 @@ public class Bird : MonoBehaviour {
         }
     }
     //黑色小鸟的爆炸技能
-    public void BoomSkill() {
+    public virtual void BoomSkill() {
 
     }
     //绿色小鸟的回旋技能
@@ -120,7 +122,7 @@ public class Bird : MonoBehaviour {
         r2d.velocity *= 2.2f;
     }
     //鼠标按下
-    void OnMouseDown() {
+    public void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)&&onGround==false) {
             AudioPlay(@select);
 
@@ -132,7 +134,7 @@ public class Bird : MonoBehaviour {
         }
     }
     //鼠标抬起
-    void OnMouseUp() {
+    public void OnMouseUp() {
         if (Input.GetMouseButtonUp(0)&&onGround==false) {
             launch = true;
             if (canMove) {
@@ -153,7 +155,7 @@ public class Bird : MonoBehaviour {
 
     }
 
-    void Fly() {
+    public void Fly() {
         AudioPlay(fly);
 
         isFly = true;
@@ -169,7 +171,7 @@ public class Bird : MonoBehaviour {
     //RigidBody的Angular Drag值代表旋转衰减,阻力(空气阻力)
 
     //绘制橡皮筋
-    void DrawLine() {
+    public void DrawLine() {
 
         //激活绘制橡皮筋
         lrRight.enabled = true;
@@ -184,7 +186,7 @@ public class Bird : MonoBehaviour {
     }
 
     //销毁自身
-    void DestroyMyself() {
+    public void DestroyMyself() {
         GameManager.instance.birds.Remove(this);
         Instantiate(boom, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
@@ -192,7 +194,7 @@ public class Bird : MonoBehaviour {
         GameManager.instance.NextBird();
     }
     //小鸟碰到物体就取消拖尾
-    void OnCollisionEnter2D(Collision2D collision) {
+    public void OnCollisionEnter2D(Collision2D collision) {
         trail.ClearTrail();
         if (collision.transform.tag == "Enemy" || collision.transform.tag == "Ground" && launch) {
             isFly = false;
@@ -205,7 +207,6 @@ public class Bird : MonoBehaviour {
             Invoke("DestroyMyself", 3);
         }
     }
-
     public void AudioPlay(AudioClip ac) {
         AudioSource.PlayClipAtPoint(ac, transform.position);
     }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public List<Pig> pigs;
     public static GameManager instance;
 
-    private Vector3 originPos;//初始位置
+    public Vector3 originPos;//初始位置
     public GameObject winPanel;
     public GameObject losePanel;
     public GameObject pausePanel;
