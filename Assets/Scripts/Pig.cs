@@ -34,7 +34,7 @@ public class Pig : MonoBehaviour {
         //collision.relativeVelocity表示相对速度(向量),magnitude表示该向量的模长
         //死亡
         if (collision.relativeVelocity.magnitude > maxSpeed) {
-            PigDead();
+            Dead();
         }
         //受伤
         else if (collision.relativeVelocity.magnitude > minSpeed && collision.relativeVelocity.magnitude < maxSpeed) {
@@ -49,7 +49,7 @@ public class Pig : MonoBehaviour {
 
     }
     //绿皮猪死亡之后的操作
-    public void PigDead() {
+    public void Dead() {
         if (isPig) {
             GameManager.instance.pigs.Remove(this);
             AudioPlay(dead);

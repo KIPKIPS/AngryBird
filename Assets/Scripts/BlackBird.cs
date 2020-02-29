@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackBird : Bird
-{
+public class BlackBird : Bird {
     private List<Pig> blocks = new List<Pig>();
     public AudioClip ac;
     public GameObject boomBird;
@@ -16,7 +15,7 @@ public class BlackBird : Bird
     // Start is called before the first frame update
     //触发爆炸范围圈,将游戏物体的Pig脚本添加到销毁列表
     void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.tag=="Enemy") {
+        if (collision.tag == "Enemy") {
             blocks.Add(collision.transform.GetComponent<Pig>());
         }
     }
@@ -27,11 +26,15 @@ public class BlackBird : Bird
     }
 
     public override void BoomSkill() {
+        r2d.velocity = new Vector2(0,0);
+        sr.sprite = null;
         Instantiate(boomBird, currPos, Quaternion.identity);
         isFly = false;
-        AudioSource.PlayClipAtPoint(ac,transform.position);
-        foreach (var VARIABLE in blocks) {
-            VARIABLE.PigDead();
+        AudioSource.PlayClipAtPoint(ac, transform.position);
+        if (blocks.Count!=0&&blocks!=null) {
+            for (int i = 0; i < blocks.Count; i++) {
+                blocks[i].Dead();
+            }
         }
         DestroyMyself();
     }
@@ -46,23 +49,24 @@ public class BlackBird : Bird
                 case BirdType.Black:
                     ie = BoomBird();
                     StartCoroutine(ie);
-                    Invoke("BoomSkill", 2.5f);
+                    Invoke("BoomSkill", 3f);
                     break;
             }
         }
     }
 
     IEnumerator BoomBird() {
-        yield return new WaitForSeconds(2.5f/3f);
-        sr.sprite = exp1;
-        yield return new WaitForSeconds(5f / 3f);
-        sr.sprite = exp2;
-        yield return new WaitForSeconds(7.5f / 3f);
+        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(1f);
+        //sr.sprite = exp1;
+        //yield return new WaitForSeconds(1f);
+        //sr.sprite = exp2;
+        //yield return new WaitForSeconds(1f);
         sr.sprite = exp3;
     }
     public new void DestroyMyself() {
         GameManager.instance.birds.Remove(this);
-        if (ie!=null) {
+        if (ie != null) {
             StopCoroutine(ie);
         }
         Destroy(this.gameObject);

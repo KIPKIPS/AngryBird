@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour {
     public GameObject winPanel;
     public GameObject losePanel;
     public GameObject pausePanel;
-
+    public int birdCount;
+    public int pigCount;
+    public int starCount;
     public GameObject[] stars;
     void Initialized() {
         for (int i = 0; i < birds.Count; i++) {
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Initialized();
+        birdCount = birds.Count;
+        pigCount = pigs.Count;
     }
 
     // Update is called once per frame
@@ -69,7 +73,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public IEnumerator Stars() {
-        for (int i = 0; i < birds.Count + 1; i++) {
+        if (birds.Count==birdCount-pigCount) {
+            starCount = 2;
+        }
+        else {
+            starCount = birds.Count > birdCount - pigCount ? 3 : 1;
+        }
+        for (int i = 0; i < starCount; i++) {
             yield return new WaitForSeconds(0.5f);
             stars[i].SetActive(true);
         }
