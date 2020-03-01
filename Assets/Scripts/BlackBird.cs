@@ -27,7 +27,7 @@ public class BlackBird : Bird {
 
     public override void BoomSkill() {
         r2d.velocity = new Vector2(0, 0);
-        sr.sprite = null;
+        sr.enabled=false;
         Instantiate(boomBird, currPos, Quaternion.identity);
         isFly = false;
         AudioSource.PlayClipAtPoint(ac, transform.position);
