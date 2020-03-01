@@ -23,6 +23,6 @@ public class MapSelect : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
