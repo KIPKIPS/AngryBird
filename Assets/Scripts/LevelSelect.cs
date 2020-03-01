@@ -19,7 +19,8 @@ public class LevelSelect : MonoBehaviour {
         //若可以选择关卡,将图片替换成解锁图片
         if (canSelect) {
             image.sprite = unlockSprite;
-            levelNum.SetActive(true);
+            //levelNum.SetActive(true);
+            GameObject.Find("Num").gameObject.SetActive(true);
         }
     }
 
