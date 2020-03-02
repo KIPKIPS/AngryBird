@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour {
@@ -36,6 +37,8 @@ public class LevelSelect : MonoBehaviour {
         if (canSelect) {
             //存储当前关卡的名字编号
             PlayerPrefs.SetString("CurrentLevel","Level"+levelNum.GetComponent<Text>().text);
+            //加载具体关卡场景信息
+            SceneManager.LoadScene(0);
         }
     }
 }
