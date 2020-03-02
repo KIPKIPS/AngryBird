@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class LevelSelect : MonoBehaviour {
     public GameObject levelNum;
 
     public GameObject[] stars;
+    public int totalLevel = 6;
+
     // Start is called before the first frame update
     void Start() {
         stars = new[]
@@ -25,6 +28,14 @@ public class LevelSelect : MonoBehaviour {
         if (transform.parent.GetChild(0).name == gameObject.name) {
             canSelect = true;
         }
+        //非第一关关卡
+        else {
+            int lastLevelIndex = Convert.ToInt32(gameObject.name) - 1;//上一关关卡索引
+            //上一关卡通过,解锁本关卡
+            if (PlayerPrefs.GetInt("Level" + lastLevelIndex + "Pass") == 1) {
+                canSelect = true;
+            }
+        }
         //若可以选择关卡,将图片替换成解锁图片
         if (canSelect) {
             bt.enabled = true;
@@ -36,6 +47,7 @@ public class LevelSelect : MonoBehaviour {
                 stars[i].SetActive(true);
             }
         }
+        
     }
 
     // Update is called once per frame

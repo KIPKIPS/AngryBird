@@ -1505,6 +1505,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 461709764}
+  stars: []
+  totalLevel: 6
 --- !u!114 &233694136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1976,6 +1978,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 870886482}
+  stars: []
+  totalLevel: 6
 --- !u!114 &314550359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2121,6 +2125,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1777100844}
+  stars: []
+  totalLevel: 6
 --- !u!114 &333380509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2494,6 +2500,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1871908476}
+  stars: []
+  totalLevel: 6
 --- !u!114 &366309884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3209,6 +3217,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 2001164272}
+  stars: []
+  totalLevel: 6
 --- !u!114 &539445781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,6 +3516,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 227140044}
+  stars: []
+  totalLevel: 6
 --- !u!114 &624769206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4791,6 +4803,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 2128682225}
+  stars: []
+  totalLevel: 6
 --- !u!114 &849617204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5898,6 +5912,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 519098129}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1084955507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5940,7 +5956,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1084955508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1084955506}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1084955508
@@ -6552,6 +6579,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1688683848}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1167991665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7097,6 +7126,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1477875583}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1278104641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7139,7 +7170,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1278104642}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1278104640}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1278104642
@@ -7845,6 +7887,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 72477925}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1450500320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8237,6 +8281,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 741646604}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1504121574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9095,6 +9141,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 55109130}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1585521907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9137,7 +9185,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1585521908}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1585521906}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1585521908
@@ -10635,6 +10694,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1187668559}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1797669412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10932,6 +10993,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 291906237}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1867376397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10974,7 +11037,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1867376398}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1867376396}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1867376398
@@ -11248,6 +11322,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 874583402}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1896514690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11404,6 +11480,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1911179039}
+  stars: []
+  totalLevel: 6
 --- !u!114 &1906168024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11446,7 +11524,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1906168025}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1906168023}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1906168025
@@ -12699,6 +12788,8 @@ MonoBehaviour:
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1574364338}
+  stars: []
+  totalLevel: 6
 --- !u!114 &2100226468
 MonoBehaviour:
   m_ObjectHideFlags: 0

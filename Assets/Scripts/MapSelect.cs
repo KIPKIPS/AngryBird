@@ -18,7 +18,8 @@ public class MapSelect : MonoBehaviour {
     void Start() {
         bt = GetComponent<Button>();
         bt.enabled = false;
-        if (PlayerPrefs.GetInt("totalNumOfStar", 0)>=starNum) {
+        //整个地图的所有关卡星数总和
+        if (PlayerPrefs.GetInt("totalNumOfStarInMap", 0)>=starNum) {
             canSelect = true;
             bt.enabled = true;
         }

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
     public GameObject[] stars;
 
     public int starCount = 0;//当前关卡星星数量得分
+    private int totalLevel=4;
     void Initialized() {
         for (int i = 0; i < birds.Count; i++) {
             //第一只鸟的Bird脚本激活,SpringJoint2D组件激活
@@ -91,11 +92,21 @@ public class GameManager : MonoBehaviour {
     public void DataSave() {
         //保存当前正在玩的关卡的得分
         string currentLevel = PlayerPrefs.GetString("CurrentLevel");
+        string index = currentLevel.Substring(5);
+
+        PlayerPrefs.SetInt("Level"+index+"Pass",1);//设置当前关卡的通关状态
+
         int historyScore = PlayerPrefs.GetInt(currentLevel);//历史最高分数
         //打破记录,更新分数显示
         if (historyScore<starCount) {
             PlayerPrefs.SetInt(currentLevel, starCount);
         }
+        //计算一个地图中总关卡的星数
+        int sum = 0;
+        for (int i = 1; i <= totalLevel; i++) {
+            sum+=PlayerPrefs.GetInt(PlayerPrefs.GetString("Level" + i));
+        }
+        PlayerPrefs.SetInt("totalNumOfStarInMap",sum);
     }
 
     public void Pause() {
