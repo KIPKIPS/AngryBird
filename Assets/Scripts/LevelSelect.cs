@@ -12,9 +12,10 @@ public class LevelSelect : MonoBehaviour {
 
     public GameObject[] stars;
     public int totalLevel = 6;
-
+    string currentMap;
     // Start is called before the first frame update
     void Start() {
+        currentMap = PlayerPrefs.GetString("CurrentMap");
         stars = new[]
         {
             transform.Find("Star_1").gameObject,
@@ -36,7 +37,7 @@ public class LevelSelect : MonoBehaviour {
             //   canSelect = true;
             //}
             //若上一关关卡的星数大于0,代表上一关通关
-            if (PlayerPrefs.GetInt("Level" + lastLevelIndex)>0) {
+            if (PlayerPrefs.GetInt("Level" + lastLevelIndex+"Of"+currentMap)>0) {
                 canSelect = true;
             }
         }
@@ -46,7 +47,7 @@ public class LevelSelect : MonoBehaviour {
             image.sprite = unlockSprite;
             //levelNum.SetActive(true);
             transform.Find("Num").gameObject.SetActive(true);
-            int count = PlayerPrefs.GetInt("Level"+gameObject.name);
+            int count = PlayerPrefs.GetInt("Level"+gameObject.name+"Of"+currentMap);
             for (int i = 0; i < count; i++) {
                 stars[i].SetActive(true);
             }
@@ -64,7 +65,7 @@ public class LevelSelect : MonoBehaviour {
     public void Select() {
         if (canSelect) {
             //存储当前关卡的名字编号
-            PlayerPrefs.SetString("CurrentLevel","Level"+levelNum.GetComponent<Text>().text);
+            PlayerPrefs.SetString("CurrentLevel","Level"+levelNum.GetComponent<Text>().text+ "Of"+currentMap);
             //加载具体关卡场景信息
             SceneManager.LoadScene(0);
         }

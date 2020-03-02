@@ -25,9 +25,8 @@ public class MapSelect : MonoBehaviour {
             canSelect = true;
             
         }
-
         else {
-            if (PlayerPrefs.GetInt("totalNumOfStarInMap" + (mapNum-1)) >= unlockStarNum) {
+            if (PlayerPrefs.GetInt("TotalNumOfStarsInMap" + (mapNum-1)) >= unlockStarNum) {
                 canSelect = true;
             }
         }

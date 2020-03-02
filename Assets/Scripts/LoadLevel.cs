@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LoadLevel : MonoBehaviour {
     void Awake() {
-        GameObject currentLevel=Resources.Load<GameObject>("Levels/Map_1/"+PlayerPrefs.GetString("CurrentLevel"));
+        string currentMap = PlayerPrefs.GetString("CurrentMap");
+        GameObject currentLevel=Resources.Load<GameObject>("Levels/"+currentMap+"/"+PlayerPrefs.GetString("CurrentLevel"));
         Instantiate(currentLevel, Vector3.zero, Quaternion.identity);
     }
 

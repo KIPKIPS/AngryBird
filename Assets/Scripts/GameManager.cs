@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour {
     public void DataSave() {
         //保存当前正在玩的关卡的得分
         string currentLevel = PlayerPrefs.GetString("CurrentLevel");
-
+        string currentMap = PlayerPrefs.GetString("CurrentMap");
         //string index = currentLevel.Substring(5);
         //PlayerPrefs.SetInt("Level"+index+"Pass",1);//设置当前关卡的通关状态
 
@@ -104,10 +104,11 @@ public class GameManager : MonoBehaviour {
         //计算一个地图中总关卡的星数
         int sum = 0;
         for (int i = 1; i <= totalLevel; i++) {
-            sum+=PlayerPrefs.GetInt("Level" + i);
+            sum+=PlayerPrefs.GetInt("Level" + i+"Of"+currentMap);
         }
         //totalNumOfStarInMap1
-        PlayerPrefs.SetInt("totalNumOfStarIn"+PlayerPrefs.GetString("CurrentMap"),sum);
+        //保存当前地图
+        PlayerPrefs.SetInt("TotalNumOfStarsIn"+currentMap,sum);
     }
 
     public void Pause() {

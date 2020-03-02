@@ -458,13 +458,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8950fd5108c87e34693f3e5566c4c3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starNum: 10
+  unlockStarNum: 10
   canSelect: 0
   stars: {fileID: 1967934465}
   locks: {fileID: 1254194616}
   panel: {fileID: 1096306002}
   map: {fileID: 892427973}
   bt: {fileID: 0}
+  mapNum: 2
 --- !u!1 &100769697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,13 +1740,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8950fd5108c87e34693f3e5566c4c3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starNum: 30
+  unlockStarNum: 10
   canSelect: 0
   stars: {fileID: 661287018}
   locks: {fileID: 2070375365}
   panel: {fileID: 0}
   map: {fileID: 0}
   bt: {fileID: 0}
+  mapNum: 4
 --- !u!1 &252152068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSelect: 0
   image: {fileID: 0}
-  unlockSprite: {fileID: -715101453228384595, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
+  unlockSprite: {fileID: -2403944478104568073, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1777100844}
@@ -3213,7 +3215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSelect: 0
   image: {fileID: 0}
-  unlockSprite: {fileID: -715101453228384595, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
+  unlockSprite: {fileID: -2403944478104568073, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 2001164272}
@@ -3560,7 +3562,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 624769207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 624769205}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &624769207
@@ -4799,7 +4812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSelect: 0
   image: {fileID: 0}
-  unlockSprite: {fileID: -715101453228384595, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
+  unlockSprite: {fileID: -2403944478104568073, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 2128682225}
@@ -6575,7 +6588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSelect: 0
   image: {fileID: 0}
-  unlockSprite: {fileID: -715101453228384595, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
+  unlockSprite: {fileID: -2403944478104568073, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1688683848}
@@ -9462,13 +9475,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8950fd5108c87e34693f3e5566c4c3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starNum: 20
+  unlockStarNum: 10
   canSelect: 0
   stars: {fileID: 841034391}
   locks: {fileID: 1640107222}
   panel: {fileID: 954096826}
   map: {fileID: 892427973}
   bt: {fileID: 0}
+  mapNum: 3
 --- !u!1 &1637861895
 GameObject:
   m_ObjectHideFlags: 0
@@ -10303,13 +10317,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8950fd5108c87e34693f3e5566c4c3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starNum: 0
+  unlockStarNum: 0
   canSelect: 0
   stars: {fileID: 1637861895}
   locks: {fileID: 765704310}
   panel: {fileID: 1403732525}
   map: {fileID: 892427973}
   bt: {fileID: 0}
+  mapNum: 1
 --- !u!1 &1777100844
 GameObject:
   m_ObjectHideFlags: 0
@@ -10690,7 +10705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canSelect: 0
   image: {fileID: 0}
-  unlockSprite: {fileID: -715101453228384595, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
+  unlockSprite: {fileID: -2403944478104568073, guid: 7039454ec43e46540bdd4d3fdb7a89ff,
     type: 3}
   bt: {fileID: 0}
   levelNum: {fileID: 1187668559}
