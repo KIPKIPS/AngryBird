@@ -21,7 +21,7 @@ public class LevelSelect : MonoBehaviour {
             bt.enabled = true;
             image.sprite = unlockSprite;
             //levelNum.SetActive(true);
-            transform.Find("Num").gameObject.SetActive(true);
+            transform.Find("Num").gameObject.SetActive(true);//未激活的游戏物体也可以访问到
         }
     }
 
