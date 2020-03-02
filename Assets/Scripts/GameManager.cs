@@ -90,7 +90,12 @@ public class GameManager : MonoBehaviour {
     //存储得分数量
     public void DataSave() {
         //保存当前正在玩的关卡的得分
-        PlayerPrefs.SetInt(PlayerPrefs.GetString("CurrentLevel"),starCount);
+        string currentLevel = PlayerPrefs.GetString("CurrentLevel");
+        int historyScore = PlayerPrefs.GetInt(currentLevel);//历史最高分数
+        //打破记录,更新分数显示
+        if (historyScore<starCount) {
+            PlayerPrefs.SetInt(currentLevel, starCount);
+        }
     }
 
     public void Pause() {

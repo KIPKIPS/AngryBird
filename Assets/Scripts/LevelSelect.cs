@@ -8,8 +8,16 @@ public class LevelSelect : MonoBehaviour {
     public Sprite unlockSprite;
     public Button bt;
     public GameObject levelNum;
+
+    public GameObject[] stars;
     // Start is called before the first frame update
     void Start() {
+        stars = new[]
+        {
+            transform.Find("Star_1").gameObject,
+            transform.Find("Star_2").gameObject,
+            transform.Find("Star_3").gameObject
+        };
         bt = GetComponent<Button>();
         bt.enabled = false;
         image = GetComponent<Image>();//获取Image组件
@@ -22,7 +30,11 @@ public class LevelSelect : MonoBehaviour {
             bt.enabled = true;
             image.sprite = unlockSprite;
             //levelNum.SetActive(true);
-            transform.Find("Num").gameObject.SetActive(true);//未激活的游戏物体也可以访问到
+            transform.Find("Num").gameObject.SetActive(true);
+            int count = PlayerPrefs.GetInt("Level"+gameObject.name);
+            for (int i = 0; i < count; i++) {
+                stars[i].SetActive(true);
+            }
         }
     }
 
