@@ -32,7 +32,11 @@ public class LevelSelect : MonoBehaviour {
         else {
             int lastLevelIndex = Convert.ToInt32(gameObject.name) - 1;//上一关关卡索引
             //上一关卡通过,解锁本关卡
-            if (PlayerPrefs.GetInt("Level" + lastLevelIndex + "Pass") == 1) {
+            //if (PlayerPrefs.GetInt("Level" + lastLevelIndex + "Pass") == 1) {
+            //   canSelect = true;
+            //}
+            //若上一关关卡的星数大于0,代表上一关通关
+            if (PlayerPrefs.GetInt("Level" + lastLevelIndex)>0) {
                 canSelect = true;
             }
         }
