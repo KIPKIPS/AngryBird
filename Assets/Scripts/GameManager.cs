@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour {
     public GameObject pausePanel;
     public int birdCount;
     public int pigCount;
-    public int starCount;
     public GameObject[] stars;
+
+    public int starCount = 0;//当前关卡星星数量得分
     void Initialized() {
         for (int i = 0; i < birds.Count; i++) {
             //第一只鸟的Bird脚本激活,SpringJoint2D组件激活
@@ -83,6 +84,13 @@ public class GameManager : MonoBehaviour {
             yield return new WaitForSeconds(0.5f);
             stars[i].SetActive(true);
         }
+        //显示星星数量表示该关卡已经完成,此时存储得分
+        DataSave();
+    }
+    //存储得分数量
+    public void DataSave() {
+        //保存当前正在玩的关卡的得分
+        PlayerPrefs.SetInt(PlayerPrefs.GetString("CurrentLevel"),starCount);
     }
 
     public void Pause() {

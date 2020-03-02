@@ -30,4 +30,12 @@ public class LevelSelect : MonoBehaviour {
     {
         
     }
+
+    //关卡选择存储
+    public void Select() {
+        if (canSelect) {
+            //存储当前关卡的名字编号
+            PlayerPrefs.SetString("CurrentLevel","Level"+levelNum.GetComponent<Text>().text);
+        }
+    }
 }
