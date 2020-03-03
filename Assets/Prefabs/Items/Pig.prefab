@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75558db2158884428e29f7448f17185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 8
-  minSpeed: 4
+  maxSpeed: 6
+  minSpeed: 3
   sr: {fileID: 0}
   hurtSprite: {fileID: -8281071825006879847, guid: abd1d39e8b7f48248a7dfbc6fd6577a3,
     type: 3}
