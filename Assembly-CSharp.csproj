@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\PanelController.cs" />
     <Compile Include="Assets\Scripts\PausePanel.cs" />
     <Compile Include="Assets\Scripts\Pig.cs" />
+    <Compile Include="Assets\Scripts\Test\DeletePlayerPrefsData.cs" />
     <Compile Include="Assets\Scripts\Trails.cs" />
     <Compile Include="Assets\Scripts\Win.cs" />
     <Reference Include="Unity.Timeline.Editor">
