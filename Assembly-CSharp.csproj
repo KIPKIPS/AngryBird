@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LevelSelect.cs" />
     <Compile Include="Assets\Scripts\LoadLevel.cs" />
+    <Compile Include="Assets\Scripts\LoadMapAsync.cs" />
     <Compile Include="Assets\Scripts\MapSelect.cs" />
     <Compile Include="Assets\Scripts\PanelController.cs" />
     <Compile Include="Assets\Scripts\PausePanel.cs" />
