@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour {
     public int birdCount;
     public int pigCount;
     public GameObject[] stars;
-
     public int starCount = 0;//当前关卡星星数量得分
     private int totalLevel=6;
     void Initialized() {
@@ -52,7 +51,6 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
     }
 
     public void NextBird() {
@@ -117,7 +115,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Retry() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
         Time.timeScale = 1;
     }
 

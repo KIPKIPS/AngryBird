@@ -67,7 +67,7 @@ public class LevelSelect : MonoBehaviour {
             //存储当前关卡的名字编号
             PlayerPrefs.SetString("CurrentLevel","Level"+levelNum.GetComponent<Text>().text+ "Of"+currentMap);
             //加载具体关卡场景信息
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
     }
 }

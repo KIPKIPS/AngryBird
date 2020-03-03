@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Bird : MonoBehaviour {
     public Vector3 currPos;
@@ -37,7 +38,10 @@ public class Bird : MonoBehaviour {
         Red, Yellow, Black, Green
     }
     public BirdType bt;
+    public bool isReleased ;
+    
     public void Awake() {
+        isReleased = false;
         onGround = true;
         sr = GetComponent<SpriteRenderer>();
         trail = GetComponent<Trails>().trail;
@@ -60,7 +64,11 @@ public class Bird : MonoBehaviour {
     }
 
     // Update is called once per frame
-    public void Update() {
+    void Update() {
+        //是否点击了UI
+        if (EventSystem.current.IsPointerOverGameObject()) {
+            return;
+        }
         currPos = transform.position;
         if (isClick) {
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);//将鼠标坐标转化到屏幕空间坐标系
@@ -123,9 +131,8 @@ public class Bird : MonoBehaviour {
     }
     //鼠标按下
     public void OnMouseDown() {
-        if (Input.GetMouseButtonDown(0)&&onGround==false) {
+        if (Input.GetMouseButtonDown(0) && onGround == false) {
             AudioPlay(@select);
-
             if (canMove) {
                 isClick = true;
                 //接受物理影响
@@ -135,7 +142,8 @@ public class Bird : MonoBehaviour {
     }
     //鼠标抬起
     public void OnMouseUp() {
-        if (Input.GetMouseButtonUp(0)&&onGround==false) {
+
+        if (Input.GetMouseButtonUp(0) && onGround == false) {
             launch = true;
             if (canMove) {
                 isClick = false;
@@ -153,9 +161,12 @@ public class Bird : MonoBehaviour {
             }
         }
 
+
+
     }
 
     public void Fly() {
+        isReleased = true;
         AudioPlay(fly);
 
         isFly = true;

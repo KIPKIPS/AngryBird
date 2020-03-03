@@ -33,7 +33,7 @@ public class Pig : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         //collision.relativeVelocity表示相对速度(向量),magnitude表示该向量的模长
         //死亡
-        if (collision.relativeVelocity.magnitude > maxSpeed) {
+        if (collision.relativeVelocity.magnitude >= maxSpeed) {
             Dead();
         }
         //受伤
