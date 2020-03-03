@@ -18,12 +18,15 @@ public class MapSelect : MonoBehaviour {
     public int mapNum;
     // Start is called before the first frame update
     void Start() {
+        string currentMap = PlayerPrefs.GetString("CurrentMap");
+        //修改通关地图的星数比例
+        transform.Find("Stars").transform.Find("Rate").GetComponent<Text>().text = PlayerPrefs.GetInt("TotalNumOfStarsIn" + transform.name) + "/ 18";
+
         bt = GetComponent<Button>();
         bt.enabled = false;
         //默认解锁第一个地图
         if (transform.parent.GetChild(0).name==gameObject.name) {
             canSelect = true;
-            
         }
         else {
             if (PlayerPrefs.GetInt("TotalNumOfStarsInMap" + (mapNum-1)) >= unlockStarNum) {
