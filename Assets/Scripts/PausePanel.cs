@@ -9,6 +9,7 @@ public class PausePanel : MonoBehaviour {
     public GameObject pauseButton;
     void Awake() {
         anim = GetComponent<Animator>();
+        //覆盖全局的UI不与鼠标交互
         transform.Find("All").GetComponent<Image>().raycastTarget = false;
         transform.Find("All").transform.Find("LeftPopWindow").GetComponent<Image>().raycastTarget = false;
     }
